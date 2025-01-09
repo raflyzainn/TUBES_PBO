@@ -150,3 +150,17 @@ html {
             font-size: 1.1rem;
             font-family: 'Montserrat', sans-serif;
         }
+        
+        .logout-button {
+            background-color: #8B0000; /* Warna merah tua */
+            color: white;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: bold;
+            font-size: 1rem;
+            padding: 0.2rem 1.2rem; /* Ukuran padding untuk bentuk tombol */
+            border: none;
+            border-radius: 9999px; /* Membuat tombol oval sempurna */
+            cursor: pointer;
+            transition: background-color 0.3s;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Tambahkan bayangan */
+        }

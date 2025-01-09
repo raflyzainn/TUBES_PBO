@@ -1,13 +1,14 @@
+<%@page import="java.util.Map"%>
+<%@page import="classes.JDBC"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Review Film - Shutter Island</title>
-    <link rel="stylesheet" href="Styles/DesignReviewFilm.css">
+    <title>Review Film</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="Styles/DesignReviewFilm.css">
 </head>
 <body>
     <nav>
@@ -21,20 +22,26 @@
             <button type="submit" class="logout-button">LOGOUT</button>
         </form>
     </nav>
+    
+    <div class="container">
+        <%
+            // Mendapatkan ID film dari parameter
+            int filmId = Integer.parseInt(request.getParameter("id"));
+            JDBC jdbc = new JDBC();
+            Map<String, Object> film = jdbc.getFilmById(filmId);
 
-    <div class="container" id="review-section">
-        <div class="poster">
-            <img src="Images/shutter-island.jpg" alt="Shutter Island Poster">
-        </div>
-
+            if (film.isEmpty()) {
+        %>
+            <p>Film tidak ditemukan.</p>
+        <% } else { %>
         <div class="review-form">
-            <h1 class="section-title">Review Film: Shutter Island</h1>
-            <form action="submitReview" method="POST"> <!-- Arahkan ke servlet -->
-                <input type="hidden" name="filmId" value="5"> <!-- ID film untuk Shutter Island -->
+            <h1 class="section-title">Review Film: <%= film.get("judul") %></h1>
+            <form action="submitReview" method="POST">
+                <input type="hidden" name="filmId" value="<%= film.get("id") %>">
 
                 <div class="rating">
-                    <label for="rating">Rating (1-10):</label>
-                    <input type="number" id="rating" name="rating" min="1" max="10" required>
+                    <label for="rating">Rating (1-5):</label>
+                    <input type="number" id="rating" name="rating" min="1" max="5" required>
                 </div>
 
                 <label for="pengirim">Pengirim:</label>
@@ -45,6 +52,7 @@
                 <button type="submit" class="submit-btn">Submit Review</button>
             </form>
         </div>
+        <% } %>
     </div>
 </body>
 </html>

@@ -13,8 +13,21 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
             background-color: white;
             color: #333;
         }
+        
+        .logout-button {
+            background-color: #8B0000; 
+            color: white;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: bold;
+            font-size: 1rem;
+            padding: 0.2rem 1.2rem; 
+            border: none;
+            border-radius: 9999px; 
+            cursor: pointer;
+            transition: background-color 0.3s;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        }
 
-        /* Navigation Bar */
         nav {
             display: flex;
             justify-content: center;

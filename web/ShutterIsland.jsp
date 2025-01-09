@@ -13,7 +13,6 @@
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        /* Navigation Bar */
         nav {
             display: flex;
             justify-content: center;
@@ -38,15 +37,33 @@
         nav a:hover {
             text-decoration: underline;
         }
+        
+        .logout-button {
+            background-color: #8B0000; 
+            color: white;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: bold;
+            font-size: 1rem;
+            padding: 0.2rem 1.2rem; 
+            border: none;
+            border-radius: 9999px; 
+            cursor: pointer;
+            transition: background-color 0.3s;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        }
     </style>
 </head>
 <body class="bg-gray-100 font-sans">
     <nav>
         <img src="Images/logo.png" alt="Logo" />
         <a href="indexPengguna.jsp">MOVIES</a>
-        <a href="">MY REVIEW</a>
+        <a href="myReview.jsp">MY REVIEW</a>
         <a href="watchlist.jsp">WATCHLIST</a>
         <a href="profile.jsp">PROFILE</a>
+        <form method="get" action="signin" class="logout-form">
+            <input type="hidden" name="action" value="logout">
+            <button type="submit" class="logout-button">LOGOUT</button>
+        </form>
     </nav>
 
     <div class="movie-header bg-white shadow rounded-lg p-6 m-6 flex">

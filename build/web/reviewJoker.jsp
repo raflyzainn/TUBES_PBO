@@ -10,13 +10,17 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-        <nav>
-            <img src="Images/logo.png" alt="Logo" />
-            <a href="indexPengguna.jsp">MOVIES</a>
-            <a href="">MY REVIEW</a>
-            <a href="watchlist.jsp">WATCHLIST</a>
-            <a href="profile.jsp">PROFILE</a>
-        </nav>
+    <nav>
+        <img src="Images/logo.png" alt="Logo" />
+        <a href="indexPengguna.jsp">MOVIES</a>
+        <a href="myReview.jsp">MY REVIEW</a>
+        <a href="watchlist.jsp">WATCHLIST</a>
+        <a href="profile.jsp">PROFILE</a>
+        <form method="get" action="signin" class="logout-form">
+            <input type="hidden" name="action" value="logout">
+            <button type="submit" class="logout-button">LOGOUT</button>
+        </form>
+    </nav>
 
     <div class="container" id="review-section">
         <div class="poster">

@@ -25,7 +25,6 @@
             height: 100%;
         }
 
-        /* Kiri: Form Sign Up */
         .kiri {
             background-color: #fff;
             padding: 50px;
@@ -81,9 +80,8 @@
             cursor: pointer;
         }
 
-        /* Kanan: Gradient */
         .kanan {
-            background: linear-gradient(to bottom right, #000000, #FF0000); /* Gradient dari kiri atas ke kanan bawah */
+            background: linear-gradient(to bottom right, #000000, #FF0000); 
             display: flex;
             justify-content: center;
             align-items: center;
@@ -121,7 +119,6 @@
                 <button type="submit" class="submit-button">Sign In</button>
             </form>
 
-            <!-- Menampilkan pesan error -->
             <% String errorMessage = (String) request.getAttribute("error"); %>
             <% if (errorMessage != null) { %>
                 <div class="error-message">
@@ -132,7 +129,6 @@
     </div>
 
     <div class="split kanan">
-        <!-- Bagian kanan dengan gradient -->
     </div>
 </body>
 </html>

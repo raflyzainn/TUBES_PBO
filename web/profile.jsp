@@ -43,8 +43,12 @@
         <img src="Images/logo.png" alt="Logo" />
         <a href="indexPengguna.jsp">MOVIES</a>
         <a href="myReview.jsp">MY REVIEW</a>
-        <a href="profile.jsp">PROFILE</a>
         <a href="watchlist.jsp">WATCHLIST</a>
+        <a href="profile.jsp">PROFILE</a>
+        <form method="get" action="signin" class="logout-form">
+            <input type="hidden" name="action" value="logout">
+            <button type="submit" class="logout-button">LOGOUT</button>
+        </form>
     </nav>
 
     <div class="container">

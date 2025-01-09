@@ -25,7 +25,6 @@
             height: 100%;
         }
 
-        /* Kiri: Form Sign Up */
         .kiri {
             background-color: #fff;
             padding: 50px;
@@ -81,9 +80,8 @@
             cursor: pointer;
         }
 
-        /* Kanan: Gradient */
         .kanan {
-            background: linear-gradient(to bottom right, #000000, #FF0000); /* Gradient dari kiri atas ke kanan bawah */
+            background: linear-gradient(to bottom right, #000000, #FF0000); 
             display: flex;
             justify-content: center;
             align-items: center;
@@ -105,32 +103,25 @@
     <div class="split kiri">
         <div class="text">
             <h1 class="signup-heading">SIGN UP</h1>
-            <form method="POST" action="signup"> <!-- Form mengarah ke servlet /signup -->
-                <!-- Email -->
+            <form method="POST" action="signup"> 
                 <label for="email" class="form-label">Email:</label>
                 <input type="email" id="email" name="email" class="input-field" required><br>
 
-                <!-- Username -->
                 <label for="username" class="form-label">Username:</label>
                 <input type="text" id="username" name="username" class="input-field" required><br>
 
-                <!-- Password -->
                 <label for="password" class="form-label">Password:</label>
                 <input type="password" id="password" name="password" class="input-field" required><br>
 
-                <!-- Umur -->
                 <label for="umur" class="form-label">Umur:</label>
                 <input type="number" id="umur" name="umur" class="input-field" min="1" max="120" required><br>
 
-                <!-- Asal Negara -->
                 <label for="asalNegara" class="form-label">Asal Negara:</label>
                 <input type="text" id="asalNegara" name="asalNegara" class="input-field" required><br>
 
-                <!-- Submit Button -->
                 <button type="submit" class="submit-button">Daftar</button>
             </form>
 
-            <!-- Menampilkan pesan hasil dari backend -->
             <% String message = (String) request.getAttribute("message"); %>
             <% if (message != null) { %>
                 <div class="message">
@@ -142,7 +133,6 @@
 
 
     <div class="split kanan">
-        <!-- Bagian kanan dengan gradient -->
     </div>
 </body>
 </html>

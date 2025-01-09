@@ -40,7 +40,6 @@ public class JDBC {
 
     }
 
-    // Method untuk mengeksekusi query INSERT, UPDATE, DELETE
     public void runQuery(String query) {
         try {
             int result = stmt.executeUpdate(query);
@@ -50,7 +49,6 @@ public class JDBC {
         }
     }
 
-    // Method untuk mengeksekusi query SELECT dan mengembalikan ResultSet
     public ResultSet runSelectQuery(String query) {
         try {
             return stmt.executeQuery(query);
@@ -61,11 +59,11 @@ public class JDBC {
     }
 
     public boolean signUp(String email, String username, String password, int umur, String asalNegara) {
-        String query = "INSERT INTO Pengguna (email, username, password, umur, asal_negara, foto_profil) VALUES (?, ?, ?, ?, ?, NULL)";
+        String query = "INSERT INTO Pengguna (email, username, password, umur, asal_negara, foto_profil_url) VALUES (?, ?, ?, ?, ?, NULL)";
         try (PreparedStatement ps = con.prepareStatement(query)) {
             ps.setString(1, email);
             ps.setString(2, username);
-            ps.setString(3, password); // Pastikan password sudah di-hash jika diperlukan
+            ps.setString(3, password); 
             ps.setInt(4, umur);
             ps.setString(5, asalNegara);
 
@@ -127,7 +125,7 @@ public class JDBC {
         String query = "SELECT id, username, email FROM Pengguna WHERE username = ? AND password = ?";
         try (PreparedStatement ps = con.prepareStatement(query)) {
             ps.setString(1, username);
-            ps.setString(2, password); // In production, use hashed password comparison
+            ps.setString(2, password); 
 
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
@@ -154,11 +152,10 @@ public class JDBC {
             return sb.toString();
         } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();
-            return null; //  Dapat memberikan handling yang lebih baik di sini
+            return null; 
         }
     }
 
-    // Method untuk menutup koneksi ke database
     public void disconnect() {
         try {
             if (stmt != null) {
@@ -172,7 +169,6 @@ public class JDBC {
             message = e.getMessage();
         }
     }
-    // Add a movie to user's watchlist
 
     public boolean addToWatchlist(int userId, int filmId) {
         String query = "INSERT INTO Watchlist (pengguna_id, film_id) VALUES (?, ?)";
@@ -187,7 +183,6 @@ public class JDBC {
         }
     }
 
-// Remove a movie from user's watchlist
     public boolean removeFromWatchlist(int userId, int filmId) {
         String query = "DELETE FROM Watchlist WHERE pengguna_id = ? AND film_id = ?";
         try (PreparedStatement ps = con.prepareStatement(query)) {
@@ -201,7 +196,6 @@ public class JDBC {
         }
     }
 
-// Get user's watchlist with film details
     public List<Map<String, Object>> getWatchlist(int userId) {
         List<Map<String, Object>> watchlist = new ArrayList<>();
         String query = """
@@ -234,7 +228,6 @@ public class JDBC {
         return watchlist;
     }
 
-// Check if a movie is in user's watchlist
     public boolean isInWatchlist(int userId, int filmId) {
         String query = "SELECT 1 FROM Watchlist WHERE pengguna_id = ? AND film_id = ?";
         try (PreparedStatement ps = con.prepareStatement(query)) {
@@ -287,6 +280,111 @@ public class JDBC {
         preparedStatement.close();
         return userProfile;
     }
+    
+    public boolean addFilm(String judul, String deskripsi, String cast, String sutradara, int duration, double rating, String kategori, String genre) {
+        String query = "INSERT INTO Film (judul, deskripsi, cast, sutradara, duration, rating, kategori, genre) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+        try (PreparedStatement ps = con.prepareStatement(query)) {
+            ps.setString(1, judul);
+            ps.setString(2, deskripsi);
+            ps.setString(3, cast);
+            ps.setString(4, sutradara);
+            ps.setInt(5, duration);
+            ps.setDouble(6, rating);
+            ps.setString(7, kategori);
+            ps.setString(8, genre);
+
+            int result = ps.executeUpdate();
+            System.out.println("Film berhasil ditambahkan: " + result + " baris terpengaruh.");
+            return result > 0;
+        } catch (SQLException e) {
+            System.err.println("Error saat menambahkan film: " + e.getMessage());
+            return false;
+        }
+    }
+    
+    public boolean editFilm(int id, String judul, String deskripsi, String cast, String sutradara, int duration, double rating, String kategori, String genre) {
+        String query = "UPDATE Film SET judul = ?, deskripsi = ?, cast = ?, sutradara = ?, duration = ?, rating = ?, kategori = ?, genre = ? WHERE id = ?";
+        try (PreparedStatement ps = con.prepareStatement(query)) {
+            ps.setString(1, judul);
+            ps.setString(2, deskripsi);
+            ps.setString(3, cast);
+            ps.setString(4, sutradara);
+            ps.setInt(5, duration);
+            ps.setDouble(6, rating);
+            ps.setString(7, kategori);
+            ps.setString(8, genre);
+            ps.setInt(9, id);
+
+            int result = ps.executeUpdate();
+            System.out.println("Film berhasil diperbarui: " + result + " baris terpengaruh.");
+            return result > 0;
+        } catch (SQLException e) {
+            System.err.println("Error saat memperbarui film: " + e.getMessage());
+            return false;
+        }
+    }
+
+    public boolean deleteFilm(int id) {
+        String query = "DELETE FROM Film WHERE id = ?";
+        try (PreparedStatement ps = con.prepareStatement(query)) {
+            ps.setInt(1, id);
+
+            int result = ps.executeUpdate();
+            System.out.println("Film berhasil dihapus: " + result + " baris terpengaruh.");
+            return result > 0;
+        } catch (SQLException e) {
+            System.err.println("Error saat menghapus film: " + e.getMessage());
+            return false;
+        }
+    }
+    
+    public Map<String, Object> getFilmById(int filmId) {
+        Map<String, Object> film = new HashMap<>();
+        String query = "SELECT * FROM Film WHERE id = ?";
+        try (PreparedStatement ps = con.prepareStatement(query)) {
+            ps.setInt(1, filmId);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                film.put("id", rs.getInt("id"));
+                film.put("judul", rs.getString("judul"));
+                film.put("deskripsi", rs.getString("deskripsi"));
+                film.put("cast", rs.getString("cast"));
+                film.put("sutradara", rs.getString("sutradara"));
+                film.put("duration", rs.getInt("duration"));
+                film.put("rating", rs.getDouble("rating"));
+                film.put("kategori", rs.getString("kategori"));
+                film.put("genre", rs.getString("genre"));
+            }
+        } catch (SQLException e) {
+            System.err.println("Error saat mendapatkan film: " + e.getMessage());
+        }
+        return film;
+    }
+    
+    public List<Map<String, Object>> getAllFilms() {
+        List<Map<String, Object>> films = new ArrayList<>();
+        String query = "SELECT id, judul FROM Film WHERE id > 5";
+
+        try (PreparedStatement ps = con.prepareStatement(query);
+             ResultSet rs = ps.executeQuery()) {
+            while (rs.next()) {
+                Map<String, Object> film = new HashMap<>();
+                film.put("id", rs.getInt("id"));
+                film.put("judul", rs.getString("judul"));
+                films.add(film);
+            }
+        } catch (SQLException e) {
+            System.err.println("Error fetching films: " + e.getMessage());
+        }
+        return films;
+    }
+
+    public Connection getConnection() {
+        return this.con;
+    }
+
+
+
 
 }
 

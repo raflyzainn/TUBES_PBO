@@ -25,10 +25,8 @@ public class submitReview extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        // Mengatur tipe konten
         response.setContentType("text/html;charset=UTF-8");
 
-        // Mengambil parameter dari form
         int rating;
         String pesan = request.getParameter("review");
         String pengirim = request.getParameter("pengirim");
@@ -43,17 +41,14 @@ public class submitReview extends HttpServlet {
             return;
         }
 
-        // Validasi rating
         if (rating < 1 || rating > 5) {
             response.sendRedirect("indexPengguna.jsp?error=Rating+must+be+between+1+and+5");
             return;
         }
 
-        // Menyimpan review ke database
         JDBC jdbc = new JDBC();
         boolean isSuccess = jdbc.submitReview(rating, pesan, pengirim, filmId);
 
-        // Redirect ke indexPengguna.jsp berdasarkan hasil
         if (isSuccess) {
             response.sendRedirect("indexPengguna.jsp?success=Review+submitted");
         } else {

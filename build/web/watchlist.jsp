@@ -96,6 +96,20 @@
             nav a:hover {
                 text-decoration: underline;
             }
+            
+            .logout-button {
+            background-color: #8B0000; /* Warna merah tua */
+            color: white;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: bold;
+            font-size: 1rem;
+            padding: 0.2rem 1.2rem; /* Ukuran padding untuk bentuk tombol */
+            border: none;
+            border-radius: 9999px; /* Membuat tombol oval sempurna */
+            cursor: pointer;
+            transition: background-color 0.3s;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Tambahkan bayangan */
+        }
         </style>
     </head>
     <body>
@@ -103,9 +117,13 @@
         <nav>
             <img src="Images/logo.png" alt="Logo" />
             <a href="indexPengguna.jsp">MOVIES</a>
-            <a href="">MY REVIEW</a>
+            <a href="myReview.jsp">MY REVIEW</a>
             <a href="watchlist.jsp">WATCHLIST</a>
             <a href="profile.jsp">PROFILE</a>
+            <form method="get" action="signin" class="logout-form">
+                <input type="hidden" name="action" value="logout">
+                <button type="submit" class="logout-button">LOGOUT</button>
+            </form>
         </nav>
         <!-- Main Content -->
         <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
@@ -181,7 +199,7 @@
                     </div>
                     <h3 class="text-xl font-medium text-gray-900 mb-2">Your watchlist is empty</h3>
                     <p class="text-gray-600 mb-4">Start adding movies to keep track of what you want to watch</p>
-                    <a href="browse-movies.jsp" 
+                    <a href="indexPengguna.jsp" 
                        class="inline-block bg-primary text-white px-6 py-3 rounded-md hover:bg-red-700 transition-colors duration-300">
                         Browse Movies
                     </a>

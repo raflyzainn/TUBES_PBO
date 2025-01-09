@@ -14,36 +14,43 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
             color: #333;
         }
 
-        /* Navigation Bar */
-        nav {
-            display: flex;
-            flex-direction: row;
-            justify-content: center;
-            padding: 1.5rem;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            gap: 2.5rem;
-            background-color: white;
+nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 1.5rem;
+    gap: 2.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: white;
+    position: fixed; 
+    top: 0; 
+    left: 0;
+    width: 100%; 
+    z-index: 1000; 
+}
+
+nav img {
+    height: 30px;
+    width: auto; 
+}
+
+nav a {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    color: #FF0000;
+    text-decoration: none;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+        
+        .logout-form {
+            margin: 0;
         }
 
-        nav img {
-            height: 30px;
-            width: 10%;
-        }
-
-        nav a {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: bold;
-            color: #FF0000;
-            text-decoration: none;
-        }
-
-        nav a:hover {
-            text-decoration: underline;
-        }
-
-        /* Hero Section */
         section {
-            display: flex;
             justify-content: center;
         }
 
@@ -99,7 +106,6 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
             height: auto;
         }
 
-        /* Movies Section */
         .container {
             width: 90%;
             margin: 3rem auto;
@@ -116,18 +122,18 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
         .movies {
             display: flex;
             justify-content: center;
-            gap: 30px; /* Menambah jarak antar gambar */
+            gap: 30px; 
             flex-wrap: wrap;
         }
 
         .movie {
-            width: 300px; /* Menambah ukuran lebar gambar */
+            width: 300px; 
             text-align: center;
             transition: transform 0.3s ease-in-out;
         }
 
         .movie img {
-            width: 100%; /* Pastikan gambar memenuhi kontainer */
+            width: 100%; 
             border-radius: 12px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
         }
@@ -135,7 +141,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
         .movie p {
             margin-top: 10px;
             font-weight: bold;
-            font-size: 1.2rem; /* Menambah ukuran teks */
+            font-size: 1.2rem; 
             font-family: 'Montserrat', sans-serif;
             color: red;
         }
@@ -144,68 +150,85 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
             scroll-behavior: smooth;
         }
         
-                /* Top Films Section */
-                
-        .ranking-section {
-            margin: 3rem auto;
-            width: 90%;
-            text-align: center;
-        }
-                
-        h2.section-title {
-            font-size: 2rem;
-            font-weight: bold;
-            color: #FF0000;
-            margin-bottom: 2rem;
-        }
-               
+.ranking-section {
+    margin: 3rem auto;
+    width: 90%;
+    text-align: center;
+}
 
-        .ranking-container {
-            display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
-            gap: 20px;
-        }
+h2.section-title {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #FF0000;
+    margin-bottom: 2rem;
+}
 
-        .ranking-card {
-            width: 200px;
-            text-align: center;
-            padding: 1rem;
-            background-color: white;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease-in-out;
-        }
+.ranking-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 20px;
+}
 
-        .ranking-card:hover {
-            transform: translateY(-10px);
-        }
+.ranking-card {
+    width: 200px;
+    position: relative; 
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden; 
+    transition: transform 0.3s ease-in-out;
+    text-align: center;
+}
 
-        .ranking-number {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: #FF0000;
-        }
+.ranking-card:hover {
+    transform: translateY(-10px);
+}
 
-        .ranking-poster {
-            width: 100%;
-            height: auto;
-            border-radius: 8px;
-            margin: 0.5rem 0;
-        }
+.ranking-number {
+    position: absolute; 
+    top: 10px;
+    left: 10px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: white;
+    background-color: rgba(255, 0, 0, 0.8); 
+    padding: 5px 10px;
+    border-radius: 5px;
+}
 
-        .ranking-title {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: bold;
-            margin: 0.5rem 0;
-            color: #333;
-        }
+.ranking-poster {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 8px;
+    margin: 0;
+}
 
-        .ranking-rating {
-            font-size: 1rem;
-            color: #555;
-        }
-/* Styling for the Genres Section */
+.ranking-title {
+    position: absolute; 
+    bottom: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 1rem;
+    font-weight: bold;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.6); 
+    padding: 5px 10px;
+    border-radius: 5px;
+    max-width: 90%; 
+    white-space: nowrap; 
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.ranking-rating {
+    margin-top: 10px;
+    font-size: 1rem;
+    color: #555;
+}
+
+
 .movies-list {
     margin: 2rem auto;
     width: 90%;
@@ -215,7 +238,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
 .section-title {
     font-size: 2.5rem;
     font-family: 'Montserrat', sans-serif;
-    color: #FF0000; /* Warna merah untuk judul */
+    color: #FF0000; 
     margin-bottom: 2rem;
 }
 
@@ -223,33 +246,33 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 1.5rem; /* Jarak antar elemen genre */
+    gap: 1.5rem; 
 }
 
 .genre-item {
     background-color: #fff;
     border-radius: 12px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Shadow lembut */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
     padding: 1.5rem;
     width: 280px;
     text-align: center;
-    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Animasi hover */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; 
 }
 
 .genre-item:hover {
-    transform: translateY(-5px); /* Efek hover naik */
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Shadow lebih tebal */
+    transform: translateY(-5px); 
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); 
 }
 
 .genre-item p {
     font-family: 'Inter', sans-serif;
     margin: 0.5rem 0;
-    color: #333; /* Warna teks abu-abu gelap */
+    color: #333; 
     font-size: 1rem;
 }
 
 .genre-item p strong {
-    color: #FF0000; /* Warna merah untuk teks penting */
+    color: #FF0000; 
     font-size: 1.1rem;
     font-family: 'Montserrat', sans-serif;
 }

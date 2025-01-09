@@ -27,15 +27,13 @@ public class InterstellarReviewServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        int filmId = 1; // ID untuk film Interstellar
+        int filmId = 1; 
 
         JDBC jdbc = new JDBC();
         List<Map<String, Object>> reviews = jdbc.getReviewsByFilmId(filmId);
 
-        // Debugging
         System.out.println("Reviews fetched: " + reviews.size());
 
-        // Teruskan data ulasan ke JSP
         request.setAttribute("reviews", reviews);
 
         RequestDispatcher dispatcher = request.getRequestDispatcher("/Interstellar.jsp");

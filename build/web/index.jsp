@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Movie Review Website</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="Styles/index.css">
+    <link rel="stylesheet" href="Styles/indexPengguna.css">
 </head>
 <body>
     <nav>
@@ -65,8 +65,8 @@
         </div>
     </div>
 
-    <div class="container" id="genres-section">
-        <h1 class="section-title">GENRES</h1>
+    <div class="movies-list">
+        <h1 class="section-title">KATEGORI</h1>
         <div class="genres-list">
             <%
                 Connection connection = null;
@@ -76,7 +76,7 @@
                 try {
                     // Koneksi ke database
                     Class.forName("com.mysql.cj.jdbc.Driver");
-                    connection = DriverManager.getConnection("jdbc:mysql://localhost:3307/tubes_pbo", "root", "");
+                    connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/tubes1_pbo", "root", "");
                     statement = connection.createStatement();
                     String query = "SELECT judul, genre FROM film"; // Mengambil data dari kolom judul dan genre
                     resultSet = statement.executeQuery(query);
@@ -103,6 +103,7 @@
             %>
         </div>
     </div>
+        
     <section class="ranking-section">
         <h2 class="section-title">Top Films</h2>
         <div class="ranking-container">

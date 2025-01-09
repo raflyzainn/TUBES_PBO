@@ -14,7 +14,6 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
             color: #333;
         }
 
-        /* Navigation Bar */
         nav {
             display: flex;
             justify-content: center;
@@ -68,23 +67,22 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
         }
 
         .movie-header .details .review-button {
-            background-color: #8D0000; /* Warna latar belakang */
-            color: white; /* Warna teks */
-            padding: 0.5rem 1rem; /* Padding untuk ukuran tombol */
-            border-radius: 5px; /* Sudut melengkung */
-            border: none; /* Hapus border default */
-            font-family: 'Montserrat', sans-serif; /* Font */
-            font-weight: bold; /* Teks tebal */
-            cursor: pointer; /* Ganti kursor saat hover */
-            transition: background-color 0.3s ease; /* Animasi perubahan warna */
-            display: inline-block; /* Pastikan tampil sebagai tombol */
-            text-align: center; /* Pusatkan teks */
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Tambahkan bayangan untuk efek 3D */
+            background-color: #8D0000; 
+            color: white; 
+            padding: 0.5rem 1rem; 
+            border-radius: 5px; 
+            border: none; 
+            font-family: 'Montserrat', sans-serif; 
+            font-weight: bold; 
+            cursor: pointer; 
+            transition: background-color 0.3s ease; 
+            display: inline-block; 
+            text-align: center; 
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
         }
 
-        /* Hover Effect */
         .movie-header .details .review-button:hover {
-            background-color: #c70000; /* Warna saat hover */
+            background-color: #c70000;
         }
 
 
@@ -105,7 +103,6 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
             color: #555;
         }
         
-                /* Review Section Styling */
         .reviews-section {
             max-width: 1100px;
             margin: 2rem auto;
@@ -163,7 +160,6 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
             gap: 5px;
         }
         
-                    /* Navigation Bar */
             nav {
                 display: flex;
                 justify-content: center;

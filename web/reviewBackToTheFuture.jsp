@@ -10,13 +10,17 @@
     <link rel="stylesheet" href="Styles/DesignReviewFilm.css">
 </head>
 <body>
-        <nav>
-            <img src="Images/logo.png" alt="Logo" />
-            <a href="indexPengguna.jsp">MOVIES</a>
-            <a href="">MY REVIEW</a>
-            <a href="watchlist.jsp">WATCHLIST</a>
-            <a href="profile.jsp">PROFILE</a>
-        </nav>
+    <nav>
+        <img src="Images/logo.png" alt="Logo" />
+        <a href="indexPengguna.jsp">MOVIES</a>
+        <a href="myReview.jsp">MY REVIEW</a>
+        <a href="watchlist.jsp">WATCHLIST</a>
+        <a href="profile.jsp">PROFILE</a>
+        <form method="get" action="signin" class="logout-form">
+            <input type="hidden" name="action" value="logout">
+            <button type="submit" class="logout-button">LOGOUT</button>
+        </form>
+    </nav>
 
     <div class="container">
     <div class="poster">
@@ -25,8 +29,8 @@
 
     <div class="review-form">
         <h1 class="section-title">Review Film: Back To The Future</h1>
-        <form action="submitReview" method="POST"> <!-- Mengarah ke servlet /submitReview -->
-            <input type="hidden" name="filmId" value="2"> <!-- ID film untuk Back To The Future -->
+        <form action="submitReview" method="POST"> 
+            <input type="hidden" name="filmId" value="2"> 
 
             <div class="rating">
                 <label for="rating">Rating (1-5):</label>

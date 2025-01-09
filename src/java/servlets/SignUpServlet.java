@@ -21,7 +21,6 @@ public class SignUpServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // Mengambil parameter dari form
         String email = request.getParameter("email");
         String username = request.getParameter("username");
         String password = request.getParameter("password");
@@ -38,7 +37,6 @@ public class SignUpServlet extends HttpServlet {
             return;
         }
 
-        // Membuat instance JDBC dan memanggil method signUp
         JDBC jdbc = new JDBC();
         boolean isSuccess = jdbc.signUp(email, username, password, umur, asalNegara);
 
@@ -49,3 +47,4 @@ public class SignUpServlet extends HttpServlet {
         }
     }
 }
+

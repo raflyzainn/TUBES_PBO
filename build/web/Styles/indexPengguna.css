@@ -14,36 +14,45 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
             color: #333;
         }
 
-        /* Navigation Bar */
-        nav {
-            display: flex;
-            flex-direction: row;
-            justify-content: center;
-            padding: 1.5rem;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            gap: 2.5rem;
-            background-color: white;
-        }
+nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 1.5rem;
+    gap: 2.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: white;
+    position: fixed; /* Membuat navigasi tetap di posisi atas */
+    top: 0; /* Mengunci navigasi di atas */
+    left: 0;
+    width: 100%; /* Pastikan navigasi meluas ke seluruh lebar layar */
+    z-index: 1000; /* Memberikan prioritas tampilan lebih tinggi */
+}
 
-        nav img {
-            height: 30px;
-            width: 10%;
-        }
+nav img {
+    height: 30px;
+    width: auto; /* Ubah ke auto agar proporsi gambar tetap */
+}
 
-        nav a {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: bold;
-            color: #FF0000;
-            text-decoration: none;
-        }
+nav a {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    color: #FF0000;
+    text-decoration: none;
+}
 
-        nav a:hover {
-            text-decoration: underline;
+nav a:hover {
+    text-decoration: underline;
+}
+        
+        /* Styling Form Logout */
+        .logout-form {
+            margin: 0;
         }
 
         /* Hero Section */
         section {
-            display: flex;
             justify-content: center;
         }
 
@@ -144,67 +153,90 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
             scroll-behavior: smooth;
         }
         
-                /* Top Films Section */
-                
-        .ranking-section {
-            margin: 3rem auto;
-            width: 90%;
-            text-align: center;
-        }
-                
-        h2.section-title {
-            font-size: 2rem;
-            font-weight: bold;
-            color: #FF0000;
-            margin-bottom: 2rem;
-        }
-               
+/* Top Films Section */
+.ranking-section {
+    margin: 3rem auto;
+    width: 90%;
+    text-align: center;
+}
 
-        .ranking-container {
-            display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
-            gap: 20px;
-        }
+h2.section-title {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #FF0000;
+    margin-bottom: 2rem;
+}
 
-        .ranking-card {
-            width: 200px;
-            text-align: center;
-            padding: 1rem;
-            background-color: white;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease-in-out;
-        }
+.ranking-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 20px;
+}
 
-        .ranking-card:hover {
-            transform: translateY(-10px);
-        }
+.ranking-card {
+    width: 200px;
+    position: relative; /* Konteks posisi untuk elemen child */
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden; /* Pastikan elemen tidak keluar dari card */
+    transition: transform 0.3s ease-in-out;
+    text-align: center;
+}
 
-        .ranking-number {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: #FF0000;
-        }
+.ranking-card:hover {
+    transform: translateY(-10px);
+}
 
-        .ranking-poster {
-            width: 100%;
-            height: auto;
-            border-radius: 8px;
-            margin: 0.5rem 0;
-        }
+/* Tulisan Ranking Number */
+.ranking-number {
+    position: absolute; /* Menempatkan elemen di atas gambar */
+    top: 10px;
+    left: 10px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: white;
+    background-color: rgba(255, 0, 0, 0.8); /* Warna merah dengan transparansi */
+    padding: 5px 10px;
+    border-radius: 5px;
+}
 
-        .ranking-title {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: bold;
-            margin: 0.5rem 0;
-            color: #333;
-        }
+/* Poster Film */
+.ranking-poster {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 8px;
+    margin: 0;
+}
 
-        .ranking-rating {
-            font-size: 1rem;
-            color: #555;
-        }
+/* Judul Film */
+.ranking-title {
+    position: absolute; /* Menempatkan di atas gambar */
+    bottom: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 1rem;
+    font-weight: bold;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.6); /* Background gelap dengan transparansi */
+    padding: 5px 10px;
+    border-radius: 5px;
+    max-width: 90%; /* Agar tidak terlalu lebar */
+    white-space: nowrap; /* Menghindari teks terlalu panjang */
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Rating Film */
+.ranking-rating {
+    margin-top: 10px;
+    font-size: 1rem;
+    color: #555;
+}
+
+
 /* Styling for the Genres Section */
 .movies-list {
     margin: 2rem auto;

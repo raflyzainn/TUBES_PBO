@@ -53,7 +53,6 @@
 %>
 <!DOCTYPE html>
 <html lang="en">
-    <!-- Rest of your HTML code remains the same until the script section -->
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -71,7 +70,6 @@
             }
         </script>
         <style>
-            /* Navigation Bar */
             nav {
                 display: flex;
                 justify-content: center;
@@ -96,20 +94,35 @@
             nav a:hover {
                 text-decoration: underline;
             }
+            
+            .logout-button {
+            background-color: #8B0000; 
+            color: white;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: bold;
+            font-size: 1rem;
+            padding: 0.2rem 1.2rem; 
+            border: none;
+            border-radius: 9999px; 
+            cursor: pointer;
+            transition: background-color 0.3s;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); 
+        }
         </style>
     </head>
     <body>
-        <!-- Your existing nav section -->
         <nav>
             <img src="Images/logo.png" alt="Logo" />
             <a href="indexPengguna.jsp">MOVIES</a>
-            <a href="">MY REVIEW</a>
+            <a href="myReview.jsp">MY REVIEW</a>
             <a href="watchlist.jsp">WATCHLIST</a>
             <a href="profile.jsp">PROFILE</a>
+            <form method="get" action="signin" class="logout-form">
+                <input type="hidden" name="action" value="logout">
+                <button type="submit" class="logout-button">LOGOUT</button>
+            </form>
         </nav>
-        <!-- Main Content -->
         <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-            <!-- Sort Controls -->
             <div class="flex justify-between items-center mb-8">
                 <h1 class="text-3xl font-bold text-gray-900">My Watchlist</h1>
                 <div class="flex space-x-4">
@@ -124,7 +137,6 @@
                 </div>
             </div>
 
-            <!-- Watchlist Grid -->
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 <% if (watchlist != null && !watchlist.isEmpty()) {
                     for (Map<String, Object> film : watchlist) {%>
@@ -171,7 +183,6 @@
                     }%>
             </div>
 
-            <!-- Empty State - Updated condition -->
             <div id="empty-state" class="<%= watchlist.isEmpty() ? "" : "hidden"%> text-center py-16">
                 <div id="empty-state" class="<%= watchlist == null || watchlist.isEmpty() ? "" : "hidden"%> text-center py-16">
                     <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-gray-100 flex items-center justify-center">
@@ -181,7 +192,7 @@
                     </div>
                     <h3 class="text-xl font-medium text-gray-900 mb-2">Your watchlist is empty</h3>
                     <p class="text-gray-600 mb-4">Start adding movies to keep track of what you want to watch</p>
-                    <a href="browse-movies.jsp" 
+                    <a href="indexPengguna.jsp" 
                        class="inline-block bg-primary text-white px-6 py-3 rounded-md hover:bg-red-700 transition-colors duration-300">
                         Browse Movies
                     </a>
@@ -206,14 +217,14 @@
                         .then(data => {
                             if (data.success) {
                                 alert('Film removed from your watchlist successfully!');
-                                window.location.reload(); // Refresh the page
+                                window.location.reload(); 
                             } else {
                                 alert('Failed to remove from watchlist: ' + (data.message || 'Unknown error'));
                             }
                         })
                         .catch(error => {
                             console.error('Error:', error);
-                            window.location.reload(); // Optionally refresh the page in case of an error
+                            window.location.reload(); 
                         });
             }
 

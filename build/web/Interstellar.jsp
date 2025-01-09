@@ -38,16 +38,34 @@
         nav a:hover {
             text-decoration: underline;
         }
+        
+        .logout-button {
+            background-color: #8B0000; /* Warna merah tua */
+            color: white;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: bold;
+            font-size: 1rem;
+            padding: 0.2rem 1.2rem; /* Ukuran padding untuk bentuk tombol */
+            border: none;
+            border-radius: 9999px; /* Membuat tombol oval sempurna */
+            cursor: pointer;
+            transition: background-color 0.3s;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Tambahkan bayangan */
+        }
     </style>
 </head>
 <body class="bg-gray-100 font-sans">
-        <nav>
-            <img src="Images/logo.png" alt="Logo" />
-            <a href="indexPengguna.jsp">MOVIES</a>
-            <a href="">MY REVIEW</a>
-            <a href="watchlist.jsp">WATCHLIST</a>
-            <a href="profile.jsp">PROFILE</a>
-        </nav>
+    <nav>
+        <img src="Images/logo.png" alt="Logo" />
+        <a href="indexPengguna.jsp">MOVIES</a>
+        <a href="myReview.jsp">MY REVIEW</a>
+        <a href="watchlist.jsp">WATCHLIST</a>
+        <a href="profile.jsp">PROFILE</a>
+        <form method="get" action="signin" class="logout-form">
+            <input type="hidden" name="action" value="logout">
+            <button type="submit" class="logout-button">LOGOUT</button>
+        </form>
+    </nav>
 
     <div class="movie-header bg-white shadow rounded-lg p-6 m-6 flex">
         <img src="Images/interstellar.jpg" alt="Interstellar Movie Poster" class="w-64 h-auto rounded-md shadow-md">
@@ -80,6 +98,7 @@
     </div>
 
     <!-- Reviews Section -->
+    <!-- Reviews Section -->
     <div class="reviews-section bg-white shadow rounded-lg p-6 m-6">
         <h2 class="text-xl font-bold text-gray-800">Reviews</h2>
         <%
@@ -93,7 +112,7 @@
             try {
                 // Koneksi ke database
                 Class.forName("com.mysql.cj.jdbc.Driver");
-                connection = DriverManager.getConnection("jdbc:mysql://localhost:3307/tubes_pbo", "root", "");
+                connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/tubes1_pbo", "root", "");
 
                 // Query untuk mengambil ulasan berdasarkan film_id
                 String query = "SELECT pengirim, rating, pesan FROM ulasan WHERE film_id = ?";

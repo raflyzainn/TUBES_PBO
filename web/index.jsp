@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Movie Review Website</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="Styles/index.css">
+    <link rel="stylesheet" href="Styles/indexPengguna.css">
 </head>
 <body>
     <nav>
@@ -65,8 +65,8 @@
         </div>
     </div>
 
-    <div class="container" id="genres-section">
-        <h1 class="section-title">GENRES</h1>
+    <div class="movies-list">
+        <h1 class="section-title">KATEGORI</h1>
         <div class="genres-list">
             <%
                 Connection connection = null;
@@ -76,7 +76,7 @@
                 try {
                     // Koneksi ke database
                     Class.forName("com.mysql.cj.jdbc.Driver");
-                    connection = DriverManager.getConnection("jdbc:mysql://localhost:3307/tubes_pbo", "root", "");
+                    connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/tubes1_pbo", "root", "");
                     statement = connection.createStatement();
                     String query = "SELECT judul, genre FROM film"; // Mengambil data dari kolom judul dan genre
                     resultSet = statement.executeQuery(query);
@@ -103,38 +103,34 @@
             %>
         </div>
     </div>
+        
     <section class="ranking-section">
         <h2 class="section-title">Top Films</h2>
         <div class="ranking-container">
-            <!-- Film 1 -->
             <div class="ranking-card">
                 <div class="ranking-number">#1</div>
                 <img class="ranking-poster" src="Images/interstellar.jpg" alt="Interstellar Poster">
                 <h3 class="ranking-title">Interstellar</h3>
                 <p class="ranking-rating">⭐ 4.9</p>
             </div>
-            <!-- Film 2 -->
             <div class="ranking-card">
                 <div class="ranking-number">#2</div>
                 <img class="ranking-poster" src="Images/joker.jpg" alt="Joker Poster">
                 <h3 class="ranking-title">Joker</h3>
                 <p class="ranking-rating">⭐ 4.8</p>
             </div>
-            <!-- Film 3 -->
             <div class="ranking-card">
                 <div class="ranking-number">#3</div>
                 <img class="ranking-poster" src="Images/back-to-future.jpg" alt="Back to the Future Poster">
                 <h3 class="ranking-title">Back to the Future</h3>
                 <p class="ranking-rating">⭐ 4.7</p>
             </div>
-            <!-- Film 4 -->
             <div class="ranking-card">
                 <div class="ranking-number">#4</div>
                 <img class="ranking-poster" src="Images/jaws.jpg" alt="Jaws Poster">
                 <h3 class="ranking-title">Jaws</h3>
                 <p class="ranking-rating">⭐ 4.6</p>
             </div>
-            <!-- Film 5 -->
             <div class="ranking-card">
                 <div class="ranking-number">#5</div>
                 <img class="ranking-poster" src="Images/shutter-island.jpg" alt="Shutter Island Poster">
